@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Track and locate any IP address with real-time geographical data. Our IP tracker provides accurate details including country, city, and coordinates for any IP address, helping users gain insights into visitor locations.">
+  <meta name="keywords" content="IP tracker, IP address lookup, IP location
+  finder, IP geolocation, IP tracking tool, IP data, geographical IP tracking,
+  location tracker, real-time IP data, ip tracker IP lookup,IP address search,IP location tracker,IP to location,IP address details,Internet protocol tracker,Location based on IP,IP address information,Find IP location,IP locator service,IP address finder,
+  IP map tracker,IP tracking service,Track IP address,Locate IP Address">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="shortcut icon" href="./logo.webp" type="image/x-icon" />
+  <link rel="stylesheet" href="Style.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <title>Ip Tracker</title>
+</head>
+<body>
+    <header>
+      <nav>
+        <div class="nav-button-div">
+         <img src="./logo.webp" alt="logo" class="logo"/>
+         <button  class="nav-btn" id="nav-btn"><img id="path-icon" src="./134216_menu_lines_hamburger_icon.png" alt="icon" /></button>
+        </div>
+        <div class="nav-list-div" id="nav-list-div">
+        <ul>
+          <li><a href="/terms"><span><svg width="24" height="24"
+          xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+          clip-rule="evenodd"><path d="M0 22h12v2h-12v-2zm11-1h-10c0-1.105.895-2
+          2-2h6c1.105 0 2 .895 2 2zm6.369-12.839l-2.246 2.197s6.291 5.541 8.172
+          7.144c.475.405.705.929.705 1.446 0 1.015-.888 1.886-1.95
+          1.819-.52-.032-.981-.303-1.321-.697-1.619-1.875-7.07-8.249-7.07-8.249l-2.245
+          2.196-5.857-5.856 5.957-5.857 5.855
+          5.857zm-12.299.926c-.195-.193-.458-.302-.733-.302-.274
+          0-.537.109-.732.302-.193.195-.303.458-.303.733 0
+          .274.11.537.303.732l5.513 5.511c.194.195.457.304.732.304.275 0
+          .538-.109.732-.304.194-.193.303-.457.303-.732
+          0-.274-.109-.537-.303-.731l-5.512-5.513zm8.784-8.784c-.195-.194-.458-.303-.732-.303-.576
+          0-1.035.467-1.035 1.035 0 .275.108.539.303.732l5.513
+          5.513c.194.193.456.303.731.303.572 0 1.036-.464 1.036-1.035
+          0-.275-.109-.539-.304-.732l-5.512-5.513z"/></svg></span>Terms and
+          conditions</a></li>       
+          <li><span><svg width="24" height="24"
+          xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+          clip-rule="evenodd"><path d="M15.246 17c-.927 3.701-2.547 6-3.246
+          7-.699-1-2.32-3.298-3.246-7h6.492zm7.664 0c-1.558 3.391-4.65
+          5.933-8.386 6.733 1.315-2.068 2.242-4.362 2.777-6.733h5.609zm-21.82
+          0h5.609c.539 2.386 1.47 4.678 2.777
+          6.733-3.736-.8-6.828-3.342-8.386-6.733zm14.55-2h-7.28c-.29-1.985-.29-4.014
+          0-6h7.281c.288 1.986.288 4.015-.001 6zm-9.299
+          0h-5.962c-.248-.958-.379-1.964-.379-3s.131-2.041.379-3h5.962c-.263
+          1.988-.263 4.012 0 6zm17.28
+          0h-5.963c.265-1.988.265-4.012.001-6h5.962c.247.959.379 1.964.379
+          3s-.132 2.042-.379 3zm-8.375-8h-6.492c.925-3.702 2.546-6 3.246-7 1.194
+          1.708 2.444 3.799 3.246 7zm-8.548-.001h-5.609c1.559-3.39 4.651-5.932
+          8.387-6.733-1.237 1.94-2.214 4.237-2.778 6.733zm16.212
+          0h-5.609c-.557-2.462-1.513-4.75-2.778-6.733 3.736.801 6.829 3.343
+          8.387 6.733z"/></svg></span><a href="">Aboutpage</a></li>
+          <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" viewBox="0 0 24 24"><path d="M10.644 17.08c2.866-.662
+          4.539-1.241 3.246-3.682-3.932-7.427-1.042-11.398 3.111-11.398 4.235 0
+          7.054 4.124 3.11 11.398-1.332 2.455.437 3.034 3.242 3.682 2.483.574
+          2.647 1.787 2.647 3.889v1.031h-18c0-2.745-.22-4.258
+          2.644-4.92zm-12.644 4.92h7.809c-.035-8.177 3.436-5.313 3.436-11.127
+          0-2.511-1.639-3.873-3.748-3.873-3.115 0-5.282 2.979-2.333 8.549.969
+          1.83-1.031 2.265-3.181 2.761-1.862.43-1.983 1.34-1.983
+          2.917v.773z"/></svg></span><a
+          href="https://developer-kush-pandit.onrender.com/">Developer</a> </li>
+           <li><a href="#feedback">Feedback</a></li>
+        </ul>
+        <ul class="ul2">
+         <li>&copy; 2024 Developer Kush</li>
+         <li>Ip tracker</li>
+         <li>Legal</li>
+         <li>Documentation</li>
+        </ul>
+       </div> 
+      </nav>
+    </header>
+    <main>
+     <h1>IP Tracker</h1>
+     <p class="introp">Easily locate and gather detailed information about any IP address. Our
+     powerful IP tracker provides you with precise geolocation data, network
+     details, and more. Whether you’re analyzing website visitors, checking for
+     security threats, or simply curious, we’ve got you covered. Start tracking
+     now and discover where your connections are coming from!</p>
+      <div class="inputdiv">
+        <form action="" method="get" accept-charset="utf-8" id="ipform">
+          <input type="text" name="ip" id="ipinput" placeholder="Enter Your IP" required="">
+          <button id="trackbtn">Track</button>
+        </form>
+         </div>
+        <div class="information-display">
+          <h2 align="center">IP information</h2>
+          <ul>
+            <li><span>Your ip:</span><span id="ipaddress"></span></li>
+            <li><span>City:</span> <span id="city"></span></li>
+            <li><span>Region:</span> <span id="region"></span></li>
+            <li><span>Country:</span> <span id="country"></span></li>
+            <li><span>Location:</span><span id="location"></span></li>
+            <li><span>Org:</span> <span id="org"></span></li>
+            <li><span>Postal code:</span><span id="postal"></span></li>
+            <li><span>Timezone:</span><span id="timezone"></span></li>
+          </ul>
+        </div>
+      <div class="map-div">
+        <div id="map"></div>
+        <h2>How this map provides location data</h2>
+        <p>The map above displays the approximate location of the IP address
+        you're tracking. This data is gathered by matching the IP address to
+        geolocation information provided by internet service providers and
+        organizations. The coordinates (latitude and longitude) shown on the map
+        represent the registered location of the IP address, which may be tied
+        to the nearest city or the region where the network originates. While
+        the location is accurate on a regional level, it may not reflect the
+        exact physical address due to privacy limitations and the nature of IP
+        address registration.</p>
+      </div>
+      <div class="description-div">
+        <div>
+          <h2>How to Protect Your Ip Address </h2>
+          <p>Protecting your IP address is crucial for maintaining privacy and security online. To prevent your IP address from being exposed, you can use a Virtual Private Network (VPN) to mask your real IP by routing your internet traffic through a secure server. Additionally, consider using proxy servers or the Tor network to further anonymize your browsing. Regularly update your firewall and antivirus software to prevent unauthorized access. Avoid clicking on suspicious links or downloading unverified files, as these could lead to IP tracking by malicious actors."
+          </p>
+        </div>
+        <div class="tips-div">
+          <h2>Tips to Protect Ip</h2>
+          <p><span>1. Use a VPN (Virtual Private Network):</span><br/>A VPN
+          hides your real IP address by routing your internet connection through
+          a secure server, masking your location and encrypting your data,
+          making it harder for websites or malicious actors to track your
+          activities.
+          </p>
+          <p><span>2. Enable a Firewall:</span> <br> Ensure your device's firewall is
+          activated. Firewalls monitor incoming and outgoing network traffic and
+          help block unauthorized access, providing an additional layer of
+          protection for your IP and data.</p>
+          <p><span>3.Update Software Regularly:</span> <br>Keep your operating
+          system, browsers, and antivirus software updated. Regular updates
+          patch security vulnerabilities that could be exploited to gain access
+          to your IP or personal data.
+          </p>
+          <p><span>4. Use Strong Passwords and Two-Factor Authentication
+          (2FA):</span> <br>Protect your online accounts with strong, unique
+          passwords and enable two-factor authentication to prevent unauthorized
+          access. This minimizes the risk of hackers gaining control of your
+          personal data.</p>
+          <p><span>5. Avoid Public Wi-Fi Without Protection:</span><br>Public
+          Wi-Fi networks are often unsecured and can expose your IP and data to
+          attackers. Use a VPN when accessing public networks to encrypt your
+          data and protect your IP.
+          </p> 
+          <p><span>6.Avoid Clicking on Suspicious Links:
+          </span><br>Be cautious of unsolicited emails or messages that contain
+          links or attachments, as these can be phishing attempts to gain access
+          to your IP address and other sensitive information.
+          </p>
+        </div>
+        <div class="ip-intro">
+          <h2>What is IP ?</h2>
+          <p>IP (Internet Protocol) is a set of rules that governs how data is sent and received over the internet or other networks. An IP address is a unique numerical label assigned to each device connected to a network. It serves two main purposes: identifying the host or network interface and providing the location of the device in the network. IP addresses allow devices to communicate with each other by ensuring data packets are sent to the correct destination. There are two main versions of IP: IPv4 (e.g., 192.168.1.1) and IPv6 (e.g., 2001:0db8:85a3::8a2e:0370:7334), with IPv6 designed to address the growing number of devices on the internet.</p>
+        </div>
+        <div class="feedback" id="feedback">
+          <form action="" method="post" accept-charset="utf-8">
+            <h2>Feedback</h2>
+            <label for="username">Name:</label>
+            <input type="text" name="username" id="username" placeholder="Your good name" required/>
+            <label for="feedback">Opinion (feedback):</label>
+            <textarea name="feedback" id="feedback" rows="8" cols="40"
+            placeholder="Express your experience 💗" required=""></textarea>
+           <label for="issue">Issues:</label>
+           <textarea name="issue" id="issue" cols="40" rows="8"
+           placeholder="Report any issues" required=""></textarea>
+           <button type="submit">Submit Feedback</button>
+          </form>
+       </div>   
+     </div>
+    </main>
+    <footer>
+      <div class="footer-div">
+       <h2>Ip tracker</h2>
+       <p>&copy; 2024 Ip Tracker all right reserved.</p>
+       <div class="ul-div">
+         <ul>
+           <li><a href=""><b>Home</b></a></li>
+           <li>IP Address</li>
+           <li>Legal</li>
+           <li>Safe</li>
+           <li>Protected</li>
+           <li><a href=""><b>Terms and conditions</b></a></li>
+           <li>Devices</li>
+           <li>Networking</li>
+         </ul>
+          <ul>
+           <li><a href=""><b>Documentation</b></a></li>
+           <li>API</li>
+           <li>Libraries</li>
+           <li>ipinfo</li>
+           <li>Authenticated</li>
+           <li>Features</li>
+           <li>Testing purpose</li>
+           <li>Accurate</li>
+         </ul>
+         <ul>
+           <li>And point</li>
+           <li>New generation</li>
+           <li>Private</li>
+           <li><a href="#feedback"><b>Feedback</b></a></li>
+           <li>Educational</li>
+           <li>Ip details</li>
+         </ul>
+       </div>
+       <div class="developer-div">
+         <p><b>Developer:</b><strong>Kush pandit (student)</strong></p>
+       </div>
+       <div>
+         <ul class="social">
+           <li><a href="https://www.instagram.com/coder_kush_68?igsh=MWU3b2wxejIwdXhhMw=="><?xml
+           version="1.0" ?><svg id="Apple" viewBox="0 0 512
+           512" xmlns="http://www.w3.org/2000/svg"
+           xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style>.cls-1{fill:url(#Nepojmenovaný_přechod_27);}.cls-2{fill:#fff;}</style><linearGradient
+           gradientUnits="userSpaceOnUse" id="Nepojmenovaný_přechod_27"
+           x1="328.27" x2="183.73" y1="508.05" y2="3.95"><stop offset="0"
+           stop-color="#ffdb73"/><stop offset="0.08" stop-color="#fdad4e"/><stop
+           offset="0.15" stop-color="#fb832e"/><stop offset="0.19"
+           stop-color="#fa7321"/><stop offset="0.23" stop-color="#f6692f"/><stop
+           offset="0.37" stop-color="#e84a5a"/><stop offset="0.48"
+           stop-color="#e03675"/><stop offset="0.55" stop-color="#dd2f7f"/><stop
+           offset="0.68" stop-color="#b43d97"/><stop offset="0.97"
+           stop-color="#4d60d4"/><stop offset="1"
+           stop-color="#4264db"/></linearGradient></defs><title/><rect
+           class="cls-1" height="35px" rx="107.23" ry="107.23" width="35px"
+           x="23.47" y="23.47"/><path class="cls-2"
+           d="M331,115.22a66.92,66.92,0,0,1,66.65,66.65V330.13A66.92,66.92,0,0,1,331,396.78H181a66.92,66.92,0,0,1-66.65-66.65V181.87A66.92,66.92,0,0,1,181,115.22H331m0-31H181c-53.71,0-97.66,44-97.66,97.66V330.13c0,53.71,44,97.66,97.66,97.66H331c53.71,0,97.66-44,97.66-97.66V181.87c0-53.71-43.95-97.66-97.66-97.66Z"/><path
+           class="cls-2"
+           d="M256,198.13A57.87,57.87,0,1,1,198.13,256,57.94,57.94,0,0,1,256,198.13m0-31A88.87,88.87,0,1,0,344.87,256,88.87,88.87,0,0,0,256,167.13Z"/><circle
+           class="cls-2" cx="346.81" cy="163.23" r="21.07"/></svg></a></li>
+           <li><a href="https://github.com/kushdeveloper68/"><?xml version="1.0" ?><svg enable-background="new
+           -1163 1657.697 56.693 56.693" height="35px" id="Layer_1" version="1.1"
+           viewBox="-1163 1657.697 56.693 56.693" width="35px"
+           xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+           xmlns:xlink="http://www.w3.org/1999/xlink"><g><path
+           clip-rule="evenodd"
+           d="M-1134.6598,1662.9163c-13.601,0-24.63,11.0267-24.63,24.6299
+           c0,10.8821,7.0573,20.1144,16.8435,23.3713c1.2308,0.2279,1.6829-0.5345,1.6829-1.1849c0-0.587-0.0227-2.5276-0.0334-4.5857
+           c-6.8521,1.4901-8.2979-2.906-8.2979-2.906c-1.1205-2.8467-2.7347-3.6039-2.7347-3.6039
+           c-2.2349-1.5287,0.1685-1.4972,0.1685-1.4972c2.473,0.1737,3.7755,2.5385,3.7755,2.5385c2.1967,3.7651,5.7618,2.6765,7.1675,2.0472
+           c0.2211-1.5917,0.8591-2.6786,1.5637-3.2936c-5.4707-0.6226-11.2218-2.7347-11.2218-12.1722c0-2.6888,0.9623-4.8861,2.538-6.611
+           c-0.2557-0.6206-1.0989-3.1255,0.2386-6.5183c0,0,2.0684-0.6616,6.7747,2.525c1.9648-0.5458,4.0719-0.8195,6.165-0.829
+           c2.093,0.0095,4.2017,0.2832,6.17,0.829c4.7012-3.1866,6.7665-2.525,6.7665-2.525c1.3406,3.3928,0.4974,5.8977,0.2417,6.5183
+           c1.5793,1.7249,2.5348,3.9221,2.5348,6.611c0,9.4602-5.7618,11.5428-11.2465,12.1527c0.8834,0.7644,1.6704,2.2632,1.6704,4.561
+           c0,3.2955-0.0282,5.9479-0.0282,6.7592c0,0.6556,0.4432,1.4236,1.6915,1.1818c9.7812-3.2605,16.8296-12.4896,16.8296-23.3682
+           C-1110.0299,1673.943-1121.0574,1662.9163-1134.6598,1662.9163z"
+           fill-rule="evenodd"/><path
+           d="M-1149.9611,1698.2793c-0.0542,0.1227-0.2469,0.1593-0.4222,0.0753c-0.1788-0.0804-0.2788-0.2473-0.2211-0.37
+           c0.053-0.126,0.2457-0.161,0.4242-0.0769C-1150.0013,1697.9882-1149.8993,1698.1566-1149.9611,1698.2793L-1149.9611,1698.2793z
+           M-1150.2642,1698.0547"/><path
+           d="M-1148.9634,1699.3922c-0.1174,0.1086-0.3473,0.0581-0.5031-0.1139c-0.1613-0.1718-0.1912-0.4016-0.072-0.5118
+           c0.1211-0.1088,0.3438-0.0579,0.505,0.1139C-1148.8721,1699.0541-1148.8407,1699.2819-1148.9634,1699.3922L-1148.9634,1699.3922z
+           M-1149.1984,1699.14"/><path
+           d="M-1147.9922,1700.8105c-0.151,0.1051-0.3979,0.0067-0.5505-0.2123c-0.151-0.2191-0.151-0.4819,0.0035-0.5872
+           c0.1526-0.1051,0.396-0.0104,0.5505,0.2068C-1147.8381,1700.4406-1147.8381,1700.7034-1147.9922,1700.8105L-1147.9922,1700.8105z
+           M-1147.9922,1700.8105"/><path
+           d="M-1146.6619,1702.1812c-0.1351,0.1489-0.4227,0.1086-0.6329-0.0945c-0.2155-0.1984-0.2753-0.4803-0.1403-0.6293
+           c0.1371-0.149,0.4263-0.1072,0.6381,0.0944C-1146.5831,1701.7501-1146.5182,1702.0337-1146.6619,1702.1812L-1146.6619,1702.1812z
+           M-1146.6619,1702.1812"/><path
+           d="M-1144.8265,1702.9769c-0.0597,0.1927-0.3365,0.2804-0.6154,0.1984c-0.2788-0.0845-0.4608-0.3103-0.4047-0.5051
+           c0.0577-0.1943,0.3361-0.2855,0.6169-0.1979C-1144.9512,1702.5563-1144.7688,1702.7805-1144.8265,1702.9769L-1144.8265,1702.9769z
+           M-1144.8265,1702.9769"/><path
+           d="M-1142.8107,1703.1243c0.0067,0.2031-0.2299,0.3716-0.5226,0.3752c-0.2944,0.0067-0.533-0.1577-0.5361-0.3577
+           c0-0.2052,0.2313-0.3717,0.5258-0.3768C-1143.0509,1702.7594-1142.8107,1702.9227-1142.8107,1703.1243L-1142.8107,1703.1243z
+           M-1142.8107,1703.1243"/><path
+           d="M-1140.9351,1702.8052c0.035,0.198-0.1686,0.4015-0.4594,0.4557c-0.2859,0.0526-0.5504-0.0701-0.587-0.2665
+           c-0.0354-0.2031,0.1716-0.4066,0.4573-0.4592C-1141.233,1702.4846-1140.9722,1702.6036-1140.9351,1702.8052L-1140.9351,1702.8052z
+           M-1140.9351,1702.8052"/></g></svg></a></li>
+           <li><a href="https://codepen.io/Kush-Pandit"><?xml version="1.0" ?><svg height="30" viewBox="0 0 72
+           72" width="30" xmlns="http://www.w3.org/2000/svg"><g fill="none"
+           fill-rule="evenodd"><path d="M36,72 L36,72 C55.882251,72 72,55.882251
+           72,36 L72,36 C72,16.117749 55.882251,-3.65231026e-15 36,0 L36,0
+           C16.117749,3.65231026e-15 -2.4348735e-15,16.117749 0,36 L0,36
+           C2.4348735e-15,55.882251 16.117749,72 36,72 Z" fill="#0B0B0A"/><path
+           d="M59.982,28.419 C59.9775,28.3875 59.97,28.359 59.9655,28.329
+           C59.955,28.2705 59.9445,28.212 59.9295,28.1565 C59.9205,28.122
+           59.907,28.089 59.8965,28.056 C59.88,28.005 59.8635,27.9555
+           59.844,27.906 C59.8305,27.8715 59.814,27.837 59.7975,27.8055
+           C59.7765,27.7575 59.754,27.7125 59.727,27.669 C59.709,27.636
+           59.688,27.6045 59.6685,27.573 C59.6415,27.5295 59.613,27.4875
+           59.5815,27.447 C59.559,27.417 59.535,27.387 59.511,27.3585
+           C59.478,27.3195 59.4435,27.282 59.4075,27.246 C59.3805,27.219
+           59.355,27.1905 59.3265,27.1665 C59.2875,27.132 59.2485,27.099
+           59.2095,27.0675 C59.178,27.0435 59.148,27.0195 59.1165,26.997
+           C59.1045,26.9895 59.094,26.979 59.082,26.9715 L37.1445,12.3465
+           C36.4515,11.8845 35.55,11.8845 34.8555,12.3465 L12.9195,26.9715
+           C12.9075,26.979 12.897,26.9895 12.885,26.997 C12.852,27.0195
+           12.822,27.0435 12.792,27.0675 C12.7515,27.099 12.7125,27.132
+           12.675,27.1665 C12.6465,27.1905 12.6195,27.219 12.5925,27.246
+           C12.5565,27.282 12.522,27.3195 12.4905,27.3585 C12.465,27.387
+           12.441,27.417 12.4185,27.447 C12.3885,27.4875 12.36,27.5295
+           12.333,27.573 C12.312,27.6045 12.2925,27.636 12.273,27.669
+           C12.2475,27.7125 12.225,27.7575 12.2025,27.8055 C12.1875,27.837
+           12.171,27.8715 12.1575,27.906 C12.1365,27.9555 12.12,28.005
+           12.1035,28.056 C12.093,28.089 12.081,28.122 12.072,28.1565
+           C12.057,28.212 12.0465,28.2705 12.036,28.329 C12.03,28.359
+           12.0225,28.3875 12.0195,28.419 C12.0075,28.506 12,28.596 12,28.6875
+           L12,43.3125 C12,43.4025 12.0075,43.4925 12.0195,43.5825
+           C12.0225,43.611 12.03,43.641 12.036,43.671 C12.0465,43.7295
+           12.057,43.7865 12.072,43.8435 C12.081,43.878 12.093,43.911
+           12.1035,43.944 C12.12,43.9935 12.1365,44.0445 12.1575,44.0955
+           C12.171,44.1285 12.1875,44.1615 12.2025,44.1945 C12.225,44.241
+           12.2475,44.286 12.273,44.3325 C12.2925,44.364 12.312,44.3955
+           12.333,44.427 C12.36,44.4705 12.3885,44.511 12.4185,44.5515
+           C12.441,44.583 12.465,44.613 12.4905,44.6415 C12.522,44.679
+           12.5565,44.718 12.5925,44.7525 C12.6195,44.781 12.6465,44.808
+           12.675,44.8335 C12.7125,44.868 12.7515,44.901 12.792,44.9325
+           C12.822,44.9565 12.852,44.9805 12.885,45.003 C12.897,45.0105
+           12.9075,45.021 12.9195,45.0285 L34.8555,59.6535 C35.202,59.8845
+           35.601,60 36,60 C36.399,60 36.798,59.8845 37.1445,59.6535
+           L59.082,45.0285 C59.094,45.021 59.1045,45.0105 59.1165,45.003
+           C59.148,44.9805 59.178,44.9565 59.2095,44.9325 C59.2485,44.901
+           59.2875,44.868 59.3265,44.8335 C59.355,44.808 59.3805,44.781
+           59.4075,44.7525 C59.4435,44.718 59.478,44.679 59.511,44.6415
+           C59.535,44.613 59.559,44.583 59.5815,44.5515 C59.613,44.511
+           59.6415,44.4705 59.6685,44.427 C59.688,44.3955 59.709,44.364
+           59.727,44.3325 C59.754,44.286 59.7765,44.241 59.7975,44.1945
+           C59.814,44.1615 59.8305,44.1285 59.844,44.0955 C59.8635,44.0445
+           59.88,43.9935 59.8965,43.944 C59.907,43.911 59.9205,43.878
+           59.9295,43.8435 C59.9445,43.7865 59.955,43.7295 59.9655,43.671
+           C59.97,43.641 59.9775,43.611 59.982,43.5825 C59.994,43.4925
+           60,43.4025 60,43.3125 L60,28.6875 C60,28.596 59.994,28.506
+           59.982,28.419 L59.982,28.419 L59.982,28.419 Z M38.0625,17.9175
+           L54.2235,28.6905 L47.0055,33.519 L38.0625,27.537 L38.0625,17.9175
+           L38.0625,17.9175 Z M33.9375,17.9175 L33.9375,27.537 L24.996,33.519
+           L17.7765,28.6905 L33.9375,17.9175 L33.9375,17.9175 Z M16.125,32.5485
+           L21.2865,36 L16.125,39.4515 L16.125,32.5485 L16.125,32.5485 Z
+           M33.9375,54.0825 L17.7765,43.3095 L24.996,38.4825 L33.9375,44.463
+           L33.9375,54.0825 L33.9375,54.0825 Z M36,40.8795 L28.7055,36
+           L36,31.1205 L43.296,36 L36,40.8795 L36,40.8795 Z M38.0625,54.0825
+           L38.0625,44.463 L47.0055,38.4825 L54.2235,43.3095 L38.0625,54.0825
+           L38.0625,54.0825 Z M55.875,39.4515 L50.715,36 L55.875,32.5485
+           L55.875,39.4515 L55.875,39.4515 Z" fill="#FFF"/></g></svg></a></li>
+           <li><a
+           href="https://x.com/kushdeveloper68?t=YAiMJFITeoaGvsep0tSbUQ&s=09"><?xml
+           version="1.0" ?><svg
+           xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+           viewBox="0 0 1200 1227" fill="none"><g
+           clip-path="url(#clip0_1_2)"><path d="M714.163 519.284L1160.89
+           0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0
+           1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137
+           519.284H714.163ZM569.165 687.828L521.697 619.934L144.011
+           79.6944H306.615L611.412 515.685L658.88 583.579L1055.08
+           1150.3H892.476L569.165 687.854V687.828Z"
+           fill="black"/></g><defs><clipPath id="clip0_1_2"><rect width="1200"
+           height="1227" fill="white"/></clipPath></defs></svg></a></li>
+         </ul>
+       </div>
+      </div>
+    </footer>
+   <script src="F.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
