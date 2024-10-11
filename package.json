@@ -1,0 +1,20 @@
+{
+  "name": "schoolweb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./Schoolwebsite/backend/Index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "ipinfo": "^1.5.1",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4"
+  }
+}
