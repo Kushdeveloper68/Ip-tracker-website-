@@ -41,7 +41,7 @@ async function displayIpInfo(ip) {
     let data = await response.json();
     
     if (data.loc) {
-        [latitude, longitude] = data.loc.split(',');
+       [latitude, longitude] = data.loc.split(',');
     } else {
         alert("Location data not available for this IP address.");
         return;

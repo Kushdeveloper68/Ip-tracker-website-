@@ -1,11 +1,12 @@
+require('dotenv').config();
 const express = require("express");
 const ipinfo = require("ipinfo");
 const mongoose = require("mongoose");
 const ex = express();
 const bodyParser = require("body-parser");
 const path = require('path');
-const PORT = 5000;
-const url = "mongodb+srv://kushpandit68775:kush68775@portfoliodata.wppojw6.mongodb.net/";
+const PORT = process.env.PORT || 7000;
+const url = process.env.DBURL || "mongodb://127.0.0.1:27017/schoolwebsite";
 const {mongooseConnection} = require('./connection.js');
 const {getRouter, postRouter} = require("./route.js");
 const {ipGettingAndSave} = require("./middleware.js");

@@ -2,7 +2,7 @@ const express = require("express");
 const getRouter = new express.Router();
 const postRouter = new express.Router();
 const {allPostHandles,allGetHandles} = require("./controller.js");
-const {feedbackSaveMiddleware} = require("./middleware.js")
+const {feedbackSaveMiddleware} = require("./middleware.js");
 let postControllers = new allPostHandles();
 let getControllers = new allGetHandles();
 // get route
